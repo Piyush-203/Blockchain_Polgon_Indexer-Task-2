@@ -1,13 +1,28 @@
 # Blockchain_Polgon_Indexer-Task-2
 
-A Rust-based indexer for tracking **Polygon (USDC.e/POL)** token flows into and out of **Binance hot wallets**.  
-It stores transfer data in a SQLite database and exposes a REST API for querying **cumulative netflow**.
+A real-time blockchain data indexing system that monitors the Polygon network for POL token transfers involving **Binance exchange addresses**.
+The system extracts transfer logs, persists them into a SQLite database, maintains cumulative netflow metrics **(inflow – outflow)**, and provides a REST API and CLI for querying.
 
 ## 🚀 Features
-- Connects to Polygon via **WebSocket RPC** (Alchemy, Infura, etc.)
-- Listens to `Transfer(address,address,uint256)` logs of the POL contract
-- Tracks inflows/outflows into Binance wallets
-- Stores all transfers + cumulative netflow in SQLite
-- REST API with a simple web UI:
-  - `/` → Homepage with button
-  - `/netflow` → Latest cumulative netflow (JSON)
+- Real-Time Indexing – Processes live blocks from Polygon WebSocket RPC.
+
+- Targeted Monitoring – Tracks POL token transfers with Binance hot wallets.
+
+- SQLite Database Storage – Persists raw transfers and cumulative netflow.
+
+- Cumulative Netflow Metric – Continuously updated inflow/outflow value.
+
+- CLI Query Tool – Fetch latest netflow directly from terminal.
+
+- REST API Endpoints – Access cumulative netflow via HTTP.
+
+- Configurable via .env – Database path, contract address, Binance addresses, RPC endpoint.
+
+
+## 🚀 Quick Start
+1. Clone the repository
+- `git clone <repository-url>`
+- `cd Blockchain_Polgon_Indexer-Task-2`
+
+2. Configure Environment
+- Create a .env file in the root directory:
