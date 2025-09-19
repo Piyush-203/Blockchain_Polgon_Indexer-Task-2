@@ -76,7 +76,23 @@ The system extracts transfer logs, persists them into a SQLite database, maintai
             └─────────────┘                 └──────────────┘
 
   ```
-7. 📦 Requirements
+7. Database Schema
+```
+   conn.execute(
+        "CREATE TABLE IF NOT EXISTS transfers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            tx_hash TEXT,
+            from_address TEXT,
+            to_address TEXT,
+            amount TEXT,
+            direction TEXT,
+            block_number INTEGER,
+            timestamp INTEGER
+        )",
+        [],
+    )?;
+   ```
+9. 📦 Requirements
 
 - **Rust**(1.75+ recommended)
 
