@@ -127,20 +127,7 @@ async fn run_indexer() -> Result<()> {
     let ws_url = std::env::var("POLYGON_RPC_WS")
         .expect("Missing POLYGON_RPC_WS in .env");
 
-    // let binance_addresses: Vec<H160> = vec![
-    //     "0xF977814e90dA44bFA03b6295A0616a897441aceC".parse().unwrap(),
-    //     "0xe7804c37c13166fF0b37F5aE0BB07A3aEbb6e245".parse().unwrap(),
-
-    //     "0x505e71695E9bc45943c58adEC1650577BcA68fD9".parse().unwrap(),
-
-    //     "0x290275e3db66394C52272398959845170E4DCb88".parse().unwrap(),
-    //     "0xD5C08681719445A5Fdce2Bda98b341A49050d821".parse().unwrap(),
-    //     "0x082489A616aB4D46d1947eE3F912e080815b08DA".parse().unwrap()
-    // ];
-
-    // let pol_address: H160 = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
-    //     .parse()
-    //     .unwrap();
+    
     let (pol_address, binance_addresses) = load_addresses();
 
     // Connect provider
@@ -247,7 +234,6 @@ async fn run_indexer() -> Result<()> {
     Ok(())
 }
 
-/// Decode ERC20 Transfer(address,address,uint256) log
 fn abi_decode_transfer(log: &Log) -> Result<(H160, H160, U256), ethers::abi::Error> {
     let from = H160::from_slice(&log.topics[1][12..]);
     let to = H160::from_slice(&log.topics[2][12..]);
