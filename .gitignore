@@ -1,0 +1,12 @@
+.env
+/target
+
+# Binaries
+**/*.pdb
+**/*.rlib
+**/*.exe
+**/*.dll
+
+# Logs
+*.log
+
